@@ -1,8 +1,35 @@
+version: "3"
 services:
   rabbitmq:
-    image: 'rabbitmq:latest'
+    image: 'rabbitmq:management'
     environment:
       - 'RABBITMQ_DEFAULT_PASS=secret'
       - 'RABBITMQ_DEFAULT_USER=myuser'
     ports:
-      - '5672'
+      - "5672:5672"
+      - "15672:15672"
+#  rabbitmq:
+#    image: 'rabbitmq:latest'
+#    environment:
+#      - 'RABBITMQ_DEFAULT_PASS=secret'
+#      - 'RABBITMQ_DEFAULT_USER=myuser'
+#    ports:
+#      - '5672'
+  #  redis:
+  #    image: 'redis:latest'
+  #    ports:
+  #      - '6379:6379'
+  invoice_db:
+    image: postgres:10
+    volumes:
+      - db-data:/var/lib/postgresql/data1
+    environment:
+      POSTGRES_PASSWORD: invoice
+      POSTGRES_USER: invoice
+      POSTGRES_DB: invoice
+    ports:
+      - "5435:5432"
+
+volumes:
+  db-data:
+    driver: local
