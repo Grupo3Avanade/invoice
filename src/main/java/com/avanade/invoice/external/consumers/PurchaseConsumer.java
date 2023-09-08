@@ -14,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 public class PurchaseConsumer {
     private final PurchaseService purchaseService;
 
-    @RabbitListener(queues = "${business.in.create-purchase}")
+    @RabbitListener(queues = "${business.in.create-invoice}")
     public void consume(@Payload CreatePurchaseDto dto) {
         purchaseService.execute(dto);
     }

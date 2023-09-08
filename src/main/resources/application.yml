@@ -16,7 +16,7 @@ spring:
 
 business:
   in:
-    create-purchase: CREATE_PURCHASE
+    create-invoice: CREATE_INVOICE
 #  out:
 #    check-credit-card: CHECK_CREDIT_CARD
 #    check-debit-card: CHECK_DEBIT_CARD
