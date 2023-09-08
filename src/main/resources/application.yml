@@ -13,3 +13,11 @@ spring:
     allow-bean-definition-overriding: true
   application:
     name: invoice-ms
+
+business:
+  in:
+    create-purchase: CREATE_PURCHASE
+#  out:
+#    check-credit-card: CHECK_CREDIT_CARD
+#    check-debit-card: CHECK_DEBIT_CARD
+#    create-invoice: CREATE_INVOICE
