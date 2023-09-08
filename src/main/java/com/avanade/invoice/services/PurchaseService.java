@@ -26,6 +26,19 @@ public class PurchaseService {
         return purchase.toResponse();
     }
 
+    public void consumerSave(CreatePurchaseDto createPurchaseDto) throws Exception {
+        try {
+            Card card = getCard(createPurchaseDto);
+            Purchase purchase = new Purchase(createPurchaseDto, card);
+            saveOrFail(purchase);
+            System.out.println("Purchase registered: " + purchase.toString());
+        } catch (Exception e) {
+            System.out.println("Error, cant register purchase " + e.toString());
+            throw new Exception(e);
+        }
+
+    }
+
     private void saveOrFail(Purchase purchase) {
         try {
             repository.save(purchase);
