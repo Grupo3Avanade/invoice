@@ -15,8 +15,8 @@ public class PurchaseConsumer {
     private final PurchaseService purchaseService;
 
     @RabbitListener(queues = "${business.in.create-invoice}")
-    public void consume(@Payload CreatePurchaseDto dto) throws Exception {
-        System.out.println("Received queue in ${business.in.create-invoice}, dto: " + dto);
+    public void consume(@Payload CreatePurchaseDto dto) {
+        System.out.println("Received queue in ${business.in.create-invoice}, dto: " + dto.toString());
         purchaseService.consumerSave(dto);
     }
 }
