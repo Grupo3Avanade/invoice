@@ -90,17 +90,14 @@ public class InvoiceService {
         return purchaseDate.isAfter(beginDate) && purchaseDate.isBefore(endDate) && purchase.purchaseStatus.equals(PurchaseStatus.APPROVED);
     }
 
-    // Retorna a data de fechamento da fatura (dia atual do fechamento da fatura).
     private LocalDateTime getInvoiceExpirationDate() {
         return LocalDate.now().atStartOfDay();
     }
 
-    // Retorna a data de início da fatura (um mês antes da data de fechamento da fatura).
     private LocalDateTime getInvoiceBeginDate() {
         return getInvoiceExpirationDate().minusMonths(1);
     }
 
-    // Retorna a data para pagamento da fatura (uma semana após o fechamento da fatura).
     private LocalDate getInvoiceExpirationDateToPay() {
         return getInvoiceExpirationDate().plusWeeks(1).toLocalDate();
     }

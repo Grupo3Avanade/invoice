@@ -1,7 +1,6 @@
 package com.avanade.invoice.services;
 
 import com.avanade.invoice.entities.User;
-import com.avanade.invoice.exceptions.ResourceAlreadyExistsException;
 import com.avanade.invoice.exceptions.ResourceNotFoundException;
 import com.avanade.invoice.payloads.request.RequestUser;
 import com.avanade.invoice.payloads.response.ResponseUser;
@@ -38,19 +37,13 @@ public class UserService {
 
     public ResponseUser create(RequestUser request) {
         User user = new User(request);
-//        checkIfEmailAlreadyExists(user); TODO: TROCAR POR OUTRO METODO;
         saveOrFail(user);
         return user.toResponse();
     }
 
     public ResponseUser update(UUID id, RequestUser request) {
-//        Address address = new Address(request.address());
         User user = findOrFailById(id);
-
         user.setName(request.name());
-//        user.setEmail(request.email());
-//        user.setBirthday(request.birthday());
-//        user.setAddress(address);
 
         saveOrFail(user);
         return user.toResponse();
@@ -68,11 +61,4 @@ public class UserService {
             throw new DatabaseException("Error while saving user");
         }
     }
-
-//    private void checkIfEmailAlreadyExists(User user) {
-//        boolean isUserExists = repository.existsByEmail(user.getEmail());
-//        if (isUserExists) {
-//            throw new ResourceAlreadyExistsException("User with the informed email already exists");
-//        }
-//    }
 }

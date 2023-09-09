@@ -1,7 +1,6 @@
 package com.avanade.invoice.entities;
 
 import com.avanade.invoice.payloads.rabitmq.CreatePurchaseDto;
-import com.avanade.invoice.payloads.request.PurchaseRequest;
 import com.avanade.invoice.payloads.response.ResponsePurchase;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -49,21 +48,11 @@ public class Purchase {
 
     }
 
-//    public Purchase(PurchaseRequest purchaseRequest, Card card) { CreatePurchaseDto
-//    public Purchase(CreatePurchaseDto createPurchaseDto, Card card) {
-//        this.amount = createPurchaseDto.getAmount();
-//        this.store = createPurchaseDto.getStore();
-//        this.card = card;
-//    }
-
     public Purchase(CreatePurchaseDto createPurchaseDto, Card card) {
         this.sharedId = createPurchaseDto.getId();
         this.amount = createPurchaseDto.getAmount();
         this.purchaseStatus = createPurchaseDto.getStatus();
-        // LocalDateTime.of(ld, LocalDateTime.MIN.toLocalTime());
-        // this.purchaseDate = new LocalDateTime(createPurchaseDto.getCreatedAt());
-//        this.purchaseDate = LocalDateTime.parse(createPurchaseDto.getCreatedAt());
-         this.purchaseDate = this.convertDate(createPurchaseDto.getCreatedAt());
+        this.purchaseDate = this.convertDate(createPurchaseDto.getCreatedAt());
         this.store = createPurchaseDto.getStore();
         this.card = card;
     }

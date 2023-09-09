@@ -8,9 +8,6 @@ public record ResponseUser(
         UUID id,
         UUID sharedId,
         String name,
-//        String email,
-//        LocalDate birthday,
-//        ResponseAddress address,
         Date createdAt,
         Date updatedAt) {
 }

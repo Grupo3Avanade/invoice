@@ -5,8 +5,6 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import com.avanade.invoice.entities.enums.CardType;
-
-import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
@@ -26,23 +24,12 @@ public class Card {
     @Column(nullable = false)
     private String holderName;
 
-//    @Column(nullable = false)
-//    private LocalDate expiry;
-
-//    @Column(nullable = false, length = 4)
-//    private String securityCode;
-
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private CardType type;
 
-//    @Column(nullable = false)
-//    private String bankAccountId;
-
     @Column(nullable = false)
     private Integer closingDay;
-
-//    private Boolean isDependent = Boolean.FALSE;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -56,11 +43,7 @@ public class Card {
                 this.id,
                 this.number,
                 this.holderName,
-//                this.expiry,
-//                this.securityCode,
                 this.type,
-//                this.bankAccountId,
-//                this.isDependent,
                 this.closingDay,
                 this.user.getId()
         );
