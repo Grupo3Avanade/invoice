@@ -6,13 +6,9 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 public record PurchaseRequest(
-//        @NotNull
         UUID cardId,
-//        @NotNull
         String store,
-//        @NotNull
         BigDecimal amount,
-//        @NotNull
         PaymentMethod method
 ) {
 }

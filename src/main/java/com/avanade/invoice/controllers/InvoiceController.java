@@ -30,10 +30,4 @@ public class InvoiceController {
         List<InvoiceResponse> response = service.findAllByUser(idUser);
         return ResponseEntity.ok(response);
     }
-
-//    @GetMapping
-//    public ResponseEntity<List<InvoiceResponse>> getAllByCardId(@RequestParam UUID idCard) {
-//        List<InvoiceResponse> response = service.findAllByCard(idCard);
-//        return ResponseEntity.ok(response);
-//    }
 }

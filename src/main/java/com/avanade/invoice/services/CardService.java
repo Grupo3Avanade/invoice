@@ -9,7 +9,6 @@ import com.avanade.invoice.payloads.request.RequestCard;
 import com.avanade.invoice.payloads.response.ResponseCard;
 import com.avanade.invoice.repositories.CardRepository;
 import org.springframework.stereotype.Service;
-import com.avanade.invoice.services.UserService;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -69,12 +68,8 @@ public class CardService {
         Card card = new Card();
         card.setUser(user);
         card.setHolderName(requestCard.holderName());
-//        card.setExpiry(cardExpirationDate);
-//        card.setSecurityCode(securityCode);
-//        card.setBankAccountId(accountNumber);
         card.setNumber(cardNumber);
         card.setType(cardType);
-//        card.setIsDependent(requestCard.isDependent());
         card.setClosingDay(requestCard.closingDay());
 
         saveOrFail(card);
@@ -102,8 +97,6 @@ public class CardService {
 
         card.setUser(user);
         card.setHolderName(requestCard.holderName());
-//        card.setIsDependent(requestCard.isDependent());
-//        card.setExpiry(requestCard.expirationDate());
 
         saveOrFail(card);
 
